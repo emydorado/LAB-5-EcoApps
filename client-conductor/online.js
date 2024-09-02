@@ -1,29 +1,30 @@
 let socket = io('http://localhost:5050', { path: '/real-time' });
 
 document.getElementById('online').addEventListener('click', function () {
-	console.log('El botón de Activar fue presionado');
+	const conductorName = localStorage.getItem('conductorName');
+	const conductorPlaca = localStorage.getItem('selectedVehicle');
+	console.log(conductorPlaca);
+
+	if (conductorName && conductorPlaca) {
+		socket.emit('conductorOnline', { id: socket.id, name: conductorName, placa: conductorPlaca });
+	}
+	socket.on('updateUserList', (users) => {
+		const userList = document.getElementById('user-list');
+		userList.innerHTML = '';
+		users.forEach((user) => {
+			const li = document.createElement('li');
+			li.textContent = `Usuario ID: ${user}`;
+			userList.appendChild(li);
+		});
+	});
 });
 
-// const online = document.getElementById('online');
-
-// online.addEventListener('click', () => {
-// 	console.log('hola');
-
-// const conductorName = localStorage.getItem('conductorName');
-// if (conductorName) {
-// 	socket.emit('conductorOnline', { id: socket.id, name: conductorName });
-// }
-// socket.on('updateUserList', (users) => {
-// 	const userList = document.getElementById('user-list');
-// 	userList.innerHTML = '';
-
-// 	users.forEach((user) => {
-// 		const li = document.createElement('li');
-// 		li.textContent = `Usuario ID: ${user}`;
-// 		userList.appendChild(li);
-// 	});
-// });
-// });
+document.getElementById('offline').addEventListener('click', function () {
+	const conductorName = localStorage.getItem('conductorName');
+	if (conductorName) {
+		socket.emit('conductorOffline', { id: socket.id, name: conductorName });
+	}
+});
 
 async function fetchData() {
 	try {

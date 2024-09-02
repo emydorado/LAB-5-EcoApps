@@ -17,6 +17,7 @@ function selectVehicle(vehicleId) {
 
 	vehicleButton.classList.add('selected');
 	console.log('Vehículo seleccionado:', selectedVehicle);
+	localStorage.setItem('selectedVehicle', selectedVehicle);
 }
 
 // Agregar los eventos de clic a los botones de vehículos

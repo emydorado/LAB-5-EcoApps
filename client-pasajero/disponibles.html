@@ -4,14 +4,28 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>PASAJERO</title>
+		<style>
+			#buscando,
+			#cancelar {
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Conductores disponibles</h1>
-		<div id="disponibles"></div>
-		<h2>¿A dónde vas?</h2>
-		<input type="text" placeholder="Origen" id="origen" />
-		<input type="text" placeholder="Destino" id="destino" />
+		<ul id="user-list"></ul>
 
-		<button id="solicitar">Solicitar viaje</button>
+		<div id="buscador">
+			<h2>¿A dónde vas?</h2>
+			<input type="text" placeholder="Origen" id="origen" />
+			<input type="text" placeholder="Destino" id="destino" />
+			<button id="solicitar">Solicitar viaje</button>
+		</div>
+
+		<h1 id="buscando">Buscando...</h1>
+		<button id="cancelar">Cancelar</button>
+
+		<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+		<script src="disponibles.js"></script>
 	</body>
 </html>
