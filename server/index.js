@@ -82,16 +82,36 @@ io.on('connection', (socket) => {
 	socket.on('iniciarViaje', (data) => {
 		console.log('Viaje iniciado:', data);
 
-		// Actualiza el estado del viaje en el pasajero
 		const pasajero = dbp.pasajeros.find((pasajero) => pasajero.id === data.id);
-		console.log(dbp);
+		console.log('data', dbp);
 
 		if (pasajero) {
-			// Emitir la actualización al pasjaero
-			io.to(pasajero.id).emit('estadoViaje', {
-				estado: 'viaje iniciado',
+			console.log('Emitiendo estadoViaje a pasajero con ID:', pasajero.id);
+			io.emit('estadoViaje', {
+				estado: 'Viaje iniciado',
+
 				viaje: data.viaje,
 			});
+
+			console.log('Estado del viaje actualizado y enviado al pasajero');
+		} else {
+			console.log('Pasajero no encontrado');
+		}
+	});
+
+	socket.on('finalizarViaje', (data) => {
+		console.log('Viaje finalizado:', data);
+
+		const pasajero = dbp.pasajeros.find((pasajero) => pasajero.id === data.id);
+		console.log('data', dbp);
+
+		if (pasajero) {
+			console.log('Emitiendo viaje finalizado a pasajero con ID:', pasajero.id);
+			io.emit('estadoViajeFianlizado', {
+				estado: 'Viaje finalizado',
+				viaje: data.viaje,
+			});
+
 			console.log('Estado del viaje actualizado y enviado al pasajero');
 		} else {
 			console.log('Pasajero no encontrado');

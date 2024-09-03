@@ -49,4 +49,28 @@ document.getElementById('iniciar').addEventListener('click', function () {
 document.getElementById('finalizar').addEventListener('click', function () {
 	document.getElementById('iniciar').style.display = 'block';
 	document.getElementById('finalizar').style.display = 'none';
+
+	const viajeData = JSON.parse(localStorage.getItem('viajeEnProgreso'));
+
+	if (viajeData) {
+		socket.emit('finalizarViaje', {
+			id: viajeData.pasajero.id,
+			viaje: {
+				...viajeData,
+				estado: 'Viaje finalizado',
+			},
+		});
+
+		localStorage.setItem(
+			'viajeEnProgreso',
+			JSON.stringify({
+				...viajeData,
+				estado: 'Viaje finalizado',
+			})
+		);
+
+		window.location.href = 'online.html';
+	} else {
+		console.error('No se encontraron datos del viaje en localStorage.');
+	}
 });
