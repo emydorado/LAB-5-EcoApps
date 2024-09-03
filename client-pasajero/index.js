@@ -7,7 +7,7 @@ async function loginUser() {
 
 		const pasajero = {
 			name: username,
-			password: password, // if you want to generate random images for user profile go to this link: https://avatar-placeholder.iran.liara.run/
+			password: password,
 		};
 
 		const response = await fetch('http://localhost:5050/pasajeros', {

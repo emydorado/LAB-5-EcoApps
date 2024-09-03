@@ -26,6 +26,43 @@ document.getElementById('offline').addEventListener('click', function () {
 	}
 });
 
+socket.on('notificacionViaje', (data) => {
+	console.log('Nueva solicitud de viaje recibida:', data);
+	const notificaciones = document.getElementById('notificaciones');
+
+	notificaciones.innerHTML = `
+	<h3>Nueva solicitud de viaje</h3>
+	<p><strong>Origen:</strong> ${data.origen}</p>
+	<p><strong>Destino:</strong> ${data.destino}</p>
+	<p><strong>Nombre del Pasajero:</strong> ${data.pasajero.nombre}</p>
+	<button id="aceptarSolicitud">Aceptar viaje</button>
+`;
+	notificaciones.style.display = 'block';
+
+	document.getElementById('aceptarSolicitud').addEventListener('click', function () {
+		const conductorName = localStorage.getItem('conductorName');
+		const conductorPlaca = localStorage.getItem('selectedVehicle');
+
+		if (conductorName && conductorPlaca) {
+			socket.emit('aceptarSolicitud', {
+				id: data.pasajero.id,
+				viaje: {
+					...data,
+					conductor: {
+						name: conductorName,
+						placa: conductorPlaca,
+					},
+				},
+			});
+
+			localStorage.setItem('viajeEnProgreso', JSON.stringify(data));
+			window.location.href = 'progreso.html';
+		} else {
+			console.error('Faltan datos del conductor');
+		}
+	});
+});
+
 async function fetchData() {
 	try {
 		const conductorName = localStorage.getItem('conductorName');

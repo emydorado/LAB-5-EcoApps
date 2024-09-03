@@ -48,10 +48,71 @@ io.on('connection', (socket) => {
 		io.emit('updatedUserList', conductoresOnline);
 	});
 
+	socket.on('solicitarViaje', (data) => {
+		console.log('Solicitud de viaje recibida:', data);
+
+		//guardar datos del pasajero que solicitó el viaje
+		dbp.pasajeros.push({ id: socket.id, nombre: data.pasajero.nombre });
+
+		conductoresOnline.forEach((conductor) => {
+			io.to(conductor.id).emit('notificacionViaje', { ...data, pasajeroId: socket.id });
+			console.log(data);
+		});
+	});
+
+	socket.on('aceptarSolicitud', (data) => {
+		console.log('Solicitud de viaje aceptada:', data);
+		const pasajeroSocket = dbp.pasajeros.find((pasajero) => pasajero.id === data.id);
+
+		if (pasajeroSocket) {
+			const conductor = conductoresOnline.find((conductor) => conductor.id === socket.id);
+			console.log(conductor);
+
+			io.to(pasajeroSocket.id).emit('viajeAceptado', {
+				...data.viaje,
+				conductor: conductor,
+				estado: 'Aceptado',
+			});
+			console.log('conductor:', conductor);
+		} else {
+			console.log('Pasajero no encontrado');
+		}
+	});
+
+	socket.on('iniciarViaje', (data) => {
+		console.log('Viaje iniciado:', data);
+
+		// Actualiza el estado del viaje en el pasajero
+		const pasajero = dbp.pasajeros.find((pasajero) => pasajero.id === data.id);
+		console.log(dbp);
+
+		if (pasajero) {
+			// Emitir la actualización al pasjaero
+			io.to(pasajero.id).emit('estadoViaje', {
+				estado: 'viaje iniciado',
+				viaje: data.viaje,
+			});
+			console.log('Estado del viaje actualizado y enviado al pasajero');
+		} else {
+			console.log('Pasajero no encontrado');
+		}
+	});
+
 	socket.on('disconnect', () => {
 		conductoresOnline = conductoresOnline.filter((conductorOnline) => conductorOnline.id !== socket.id);
 		io.emit('updatedUserList', conductoresOnline);
 	});
+});
+
+app.get('/pasajeros', (request, response) => {
+	response.send(dbp);
+});
+
+app.post('/pasajeros', (request, response) => {
+	const { body } = request;
+	dbp.pasajeros.push(body);
+	console.log('Pasajero guardado:', body);
+	response.status(201).send(body);
 });
 
 app.get('/conductores', (request, response) => {
@@ -91,17 +152,6 @@ app.get('/conductores/:name', (request, response) => {
 	} else {
 		response.status(404).send({ error: 'Conductor not found' });
 	}
-});
-
-app.get('/pasajeros', (request, response) => {
-	response.send(dbp);
-});
-
-app.post('/pasajeros', (request, response) => {
-	const { body } = request;
-	dbp.pasajeros.push(body);
-	console.log('received data:', body); // Aquí se imprime el pasajero guardado
-	response.status(201).send(body);
 });
 
 httpServer.listen(5050, () => {

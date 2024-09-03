@@ -4,17 +4,20 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>CONDUCTOR</title>
+		<style>
+			#finalizar {
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="vehiculo"></div>
+		<h1>Viaje en progreso</h1>
+		<div id="detalles-viaje"></div>
 
-		<button id="online">Activar</button>
-		<button id="offline">Desactivar</button>
-
-		<h1>Solicitudes de viajes</h1>
-		<div id="notificaciones"></div>
+		<button id="iniciar">Iniciar viaje</button>
+		<button id="finalizar">Finalizar viaje</button>
 
 		<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-		<script src="online.js"></script>
+		<script src="progreso.js"></script>
 	</body>
 </html>
