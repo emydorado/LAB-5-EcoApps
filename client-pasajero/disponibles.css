@@ -1,0 +1,171 @@
+/* Estilos básicos para el cuerpo y el encabezado */
+body {
+	font-family: Arial, sans-serif;
+	margin: 25vh;
+	padding: 0;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+/* Estilo para los encabezados */
+.title {
+	color: #854fc2;
+	padding: 20px;
+	padding-bottom: 0;
+	margin-top: 20px;
+	margin-bottom: 0;
+	font-size: 2em;
+}
+
+.cargando {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Estilo para los encabezados secundarios */
+h2 {
+	color: #333;
+	font-size: 1.5em;
+	margin: 20px 0;
+}
+
+input::placeholder {
+	color: #21073e83;
+}
+
+input:focus {
+	border: 2px solid #854fc2;
+	box-shadow: 0 0 5px #3d077a83;
+}
+
+/* Estilo para la lista de usuarios */
+#user-list {
+	list-style-type: none;
+	padding: 0;
+	max-width: 400px;
+}
+
+#user-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 20px 0;
+}
+
+.user-item {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	text-align: left;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.user-name {
+	font-size: 1.1em;
+	color: #333;
+	margin: 0;
+}
+
+/* Estilo para la placa del conductor */
+.user-placa {
+	font-size: 1em;
+	color: #666;
+	margin: 0;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: row;
+}
+
+/* Estilo para el área del buscador */
+#buscador {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 20px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+/* Estilo para los inputs del buscador */
+#buscador input[type='text'] {
+	width: calc(50% - 22px);
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 1rem;
+	outline: none;
+}
+
+#buscador input[type='text']::placeholder {
+	color: #aaa;
+}
+
+#buscador #solicitar {
+	background-color: #854fc2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 20px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 20px;
+}
+
+#buscador #solicitar:hover {
+	background-color: #7439b7;
+}
+
+#buscando {
+	display: none;
+	color: #333;
+	font-size: 1.5em;
+	margin: 20px 0;
+	background-color: #f2e0ff;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+#cancelar {
+	display: none;
+	background-color: #ff4d4d;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 20px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#cancelar:hover {
+	background-color: #e04343;
+}
+
+.todoo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.conductores {
+	background-color: #f2e0ff;
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	align-items: center;
+	max-height: 400px;
+	margin: 20px;
+	border-radius: 10px;
+}

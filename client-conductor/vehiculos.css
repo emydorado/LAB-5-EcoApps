@@ -3,14 +3,13 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #f4f4f4;
+	background-color: #ffffff;
 	text-align: center;
 }
 
 h1 {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
+	color: #854fc2;
+	padding: 30px;
 	margin: 0;
 	font-size: 2em;
 }
@@ -21,7 +20,7 @@ button.vehiculo {
 	border: 2px solid #ddd;
 	border-radius: 8px;
 	margin: 10px;
-	padding: 0;
+	padding: 10px;
 	cursor: pointer;
 	display: inline-block;
 	text-align: center;
@@ -31,13 +30,13 @@ button.vehiculo {
 }
 
 button.vehiculo:hover {
-	border-color: #007bff;
+	border-color: #854fc2;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button.vehiculo img {
 	width: 100%;
-	height: auto;
+	height: 100%px;
 	border-bottom: 2px solid #ddd;
 	border-radius: 8px 8px 0 0;
 }
@@ -48,9 +47,8 @@ button.vehiculo h2 {
 	color: #333;
 }
 
-/* Estilos para el botón siguiente */
 button#siguiente {
-	background-color: #007bff;
+	background-color: #854fc2;
 	color: #fff;
 	border: none;
 	border-radius: 8px;
@@ -62,10 +60,10 @@ button#siguiente {
 }
 
 button#siguiente:hover {
-	background-color: #0056b3;
+	background-color: #7439b7;
 }
 
 button.vehiculo.selected {
-	border-color: #007bff;
-	background-color: #e0f0ff;
+	border-color: #854fc2;
+	background-color: #f2e0ff;
 }

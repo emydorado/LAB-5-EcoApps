@@ -6,15 +6,28 @@ socket.on('updatedUserList', (users) => {
 
 	userList.innerHTML = '';
 	users.forEach((user) => {
-		const li = document.createElement('li');
-		li.textContent = `Conductor: ${user.name} Placa: ${user.placa}`;
-		userList.appendChild(li);
+		const div = document.createElement('div');
+		div.classList.add('user-item');
+
+		const nameP = document.createElement('p');
+		nameP.classList.add('user-name');
+		nameP.textContent = `Conductor: ${user.name}`;
+
+		const placaP = document.createElement('p');
+		placaP.classList.add('user-placa');
+		placaP.textContent = `Placa: ${user.placa}`;
+
+		div.appendChild(nameP);
+		div.appendChild(placaP);
+
+		userList.appendChild(div);
 	});
 });
 
 socket.on('viajeAceptado', (data, conductor) => {
 	console.log('Solicitud de viaje aceptada:', data, conductor);
-	localStorage.setItem('viajeEnProgreso', JSON.stringify(data), 'conductor', JSON.stringify(conductor));
+	localStorage.setItem('viajeEnProgreso', JSON.stringify(data));
+	localStorage.setItem('conductor', JSON.stringify(conductor));
 	window.location.href = 'progreso.html';
 });
 

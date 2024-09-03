@@ -88,7 +88,7 @@ io.on('connection', (socket) => {
 		if (pasajero) {
 			console.log('Emitiendo estadoViaje a pasajero con ID:', pasajero.id);
 			io.emit('estadoViaje', {
-				estado: 'Viaje iniciado',
+				estado: 'iniciado',
 
 				viaje: data.viaje,
 			});

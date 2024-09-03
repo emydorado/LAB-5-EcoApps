@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		const estadoViaje = document.getElementById('estado-viaje');
 		estadoViaje.innerHTML = `
-		<p><strong>Estado:</strong> ${data.estado || 'Pendiente'}</p>
+		<p>Tu viaje fue <strong>${data.estado || 'Pendiente'}</strong></p>
 `;
 	} else {
 		console.error('No se encontraron datos del viaje en localStorage.');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const estadoViaje = document.getElementById('estado-viaje');
 
 		estadoViaje.innerHTML = `
-		    <p><strong>Estado:</strong> ${data.estado || 'Pendiente'}</p>
+		    <p>Tu viaje ha <strong>${data.estado || 'Pendiente'}</strong></p>
       `;
 
 		localStorage.setItem('viajeEnProgreso', JSON.stringify(data));

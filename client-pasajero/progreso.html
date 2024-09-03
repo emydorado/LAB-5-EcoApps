@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="progreso.css" />
 		<title>PASAJERO</title>
 		<style>
 			#detalles-viaje {
@@ -12,8 +13,10 @@
 	</head>
 	<body>
 		<h1>Viaje en progreso</h1>
-		<div id="detalles-viaje"></div>
-		<div id="estado-viaje"></div>
+		<div class="todo">
+			<div id="estado-viaje"></div>
+			<div id="detalles-viaje"></div>
+		</div>
 
 		<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 		<script src="progreso.js"></script>

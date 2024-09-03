@@ -32,10 +32,18 @@ socket.on('notificacionViaje', (data) => {
 
 	notificaciones.innerHTML = `
 	<h3>Nueva solicitud de viaje</h3>
+
+	<div class="todo">
+	<div class="datos">
 	<p><strong>Origen:</strong> ${data.origen}</p>
 	<p><strong>Destino:</strong> ${data.destino}</p>
 	<p><strong>Nombre del Pasajero:</strong> ${data.pasajero.nombre}</p>
+	</div>
+
+	<div class="aceptar">
 	<button id="aceptarSolicitud">Aceptar viaje</button>
+	</div>
+	</div>
 `;
 	notificaciones.style.display = 'block';
 

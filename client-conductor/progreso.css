@@ -1,0 +1,57 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #ffffff;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	margin-top: 20px;
+	font-size: 2rem;
+	color: #854fc2;
+}
+
+#detalles-viaje {
+	width: 100%;
+	max-width: 600px;
+	margin: 20px 0;
+	padding: 15px;
+	background-color: #ffffff;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-left: 5px solid #854fc2;
+}
+
+#detalles-viaje p {
+	margin: 10px 0;
+	font-size: 1.2rem;
+}
+
+button {
+	width: 200px;
+	padding: 10px;
+	margin: 10px 0;
+	background-color: #854fc2;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #672daa;
+}
+
+#finalizar {
+	background-color: #dc3545;
+}
+
+#finalizar:hover {
+	background-color: #c82333;
+}
